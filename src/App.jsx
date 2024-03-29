@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { Component, createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { About, Home, Profile, NoteFound } from "./pages";
@@ -11,14 +11,13 @@ const App = () => {
 
   return (
     <AppRouter.Provider value={{ name, setName }}>
-      <Header  />
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<NoteFound />} />
       </Routes>
-     
     </AppRouter.Provider>
   );
 };
