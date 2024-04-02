@@ -1,24 +1,27 @@
-import { Component, createContext, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState, createContext, useContext, Component } from "react";
 
-import { About, Home, Profile, NoteFound } from "./pages";
-import Header from "./components/Header";
+import Container from "./Container";
 
-export const AppRouter = createContext();
+export const DarkModeContext = createContext();
 
 const App = () => {
-  const [name, setName] = useState("Asqar");
-
+  const [darkMode, setDarkMode] = useState(false);
+  const sunnyToggleNight = () => {
+    setDarkMode(!darkMode);
+  };
   return (
-    <AppRouter.Provider value={{ name, setName }}>
-      <Header />
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/*" element={<NoteFound />} />
-      </Routes>
-    </AppRouter.Provider>
+    <DarkModeContext.Provider value={{ darkMode, sunnyToggleNight }}>
+      <div
+        className={`${darkMode && "dark"}  `}
+      >
+        <div className="h-screen w-full bg-[#faf9f9] dark:bg-[#070707]">
+          <div className="  container relative flex items-center justify-center w-full h-[100vh]">
+            <Container />
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </DarkModeContext.Provider>
   );
 };
 

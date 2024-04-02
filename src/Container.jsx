@@ -13,10 +13,12 @@ const Button = () => {
 
   return (
     <button
-      className={` text-red-500 button ${buttonState ? "pressed" : ""}`}
+      className={` border  rounded  w-40  items-center  py-10 pl-10 pr-10 bg-green-300 hover:bg-inherit active:bg-blue-300 ml-[680px] mt-[200px] text-red-500 button ${
+        buttonState ? "pressed" : ""
+      } w-full`}
       onClick={handleClick}
     >
-      Click Me
+      Click
     </button>
   );
 };
